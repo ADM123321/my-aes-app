@@ -1,0 +1,35 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # 允许你从网页上手动点击运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 使用 GitHub 提供的免费 Ubuntu 环境[reference:6]
+
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+
+    - name: 安装 Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: 安装 Buildozer 及其依赖
+      run: |
+        sudo apt update
+        sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+        pip install buildozer cython
+
+    - name: 执行打包
+      run: |
+        buildozer android debug
+
+    - name: 上传 APK 作为构建产物
+      uses: actions/upload-artifact@v4
+      with:
+        name: my-aes-apk
+        path: bin/*.apk
