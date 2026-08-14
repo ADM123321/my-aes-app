@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 使用 GitHub 提供的免费 Ubuntu 环境[reference:6]
+    runs-on: ubuntu-22.04  # 使用 GitHub 提供的免费 Ubuntu 环境[reference:6]
 
     steps:
     - name: 检出代码
