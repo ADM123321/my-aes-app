@@ -15,7 +15,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 
 # 你的应用依赖哪些Python库（重点！）
-requirements = python3,kivy,pycryptodome
+requirements = python3,kivy,pycryptodome,pygame
 
 # 是否全屏
 fullscreen = 0
@@ -29,7 +29,7 @@ android.api = 30
 android.minapi = 21
 android.ndk = 23b
 android.sdk = 30
-
+bootstrap = pygame
 # 图标和启动画面（可选，暂时注释掉）
 # android.icon = icon.png
 # android.presplash = presplash.png
